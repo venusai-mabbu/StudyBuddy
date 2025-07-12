@@ -105,4 +105,3 @@ const PostFAQ = () => {
 };
 
 export default PostFAQ;
-

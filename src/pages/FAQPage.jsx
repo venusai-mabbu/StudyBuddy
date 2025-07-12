@@ -47,4 +47,3 @@ const FAQPage = ({ section, title }) => {
 };
 
 export default FAQPage;
-

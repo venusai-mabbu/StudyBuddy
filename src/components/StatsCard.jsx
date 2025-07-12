@@ -13,4 +13,3 @@ const StatsCard = ({ section, count, color, label }) => (
 );
 
 export default StatsCard;
-

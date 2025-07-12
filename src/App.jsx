@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SECTIONS } from "./constants/sections";
 import Navigation from "./components/Navigation";
@@ -7,7 +9,25 @@ import FAQPage from "./pages/FAQPage";
 import PostFAQ from "./pages/PostFAQ";
 import "./App.css";
 
+import axios from 'axios';
+
+
+
 const App = () => {
+
+
+  useEffect(() => {
+
+    // axios.get('http://localhost:3000/posts/section/Java')
+    axios.get('http://localhost:3000/auth/profile')
+    .then(response => {
+        console.log(response);  // handle response
+      })
+      .catch(error => {
+       // console.error(error);        // handle error
+      });
+  }, []); // empty dependency array = run once on mount
+  
   return (
     <Router>
       <div className="container">
