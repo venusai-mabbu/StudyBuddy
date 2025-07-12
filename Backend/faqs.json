@@ -1,0 +1,254 @@
+{
+  "java": [
+    {
+      "id": "1752311610232",
+      "question": "What is Java?",
+      "answer": "Java is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle). It follows the principle of 'write once, run anywhere' (WORA), meaning Java code can run on any platform that has a Java Virtual Machine (JVM). Java is widely used for enterprise applications, web development, mobile applications (Android), and desktop applications.",
+      "createdAt": "2025-07-12T09:13:30.232Z"
+    },
+    {
+      "id": "1752311690749",
+      "question": "What are the main features of Java?",
+      "answer": "Java's main features include: Platform Independence (runs on JVM), Object-Oriented Programming (encapsulation, inheritance, polymorphism), Automatic Memory Management (garbage collection), Strong Type System, Multithreading support, Security features, Rich API libraries, and Robustness with exception handling.",
+      "createdAt": "2025-07-12T09:14:50.749Z"
+    }
+  ],
+  "dbms": [
+    {
+      "id": "1752311710000",
+      "question": "What is DBMS?",
+      "answer": "DBMS (Database Management System) is software that manages databases and provides an interface for users to interact with data. It handles data storage, retrieval, organization, and security while ensuring data integrity and consistency.",
+      "createdAt": "2025-07-12T09:15:10.000Z"
+    },
+    {
+      "id": "1752311730000",
+      "question": "What are the types of DBMS?",
+      "answer": "Types of DBMS include: Relational DBMS (RDBMS) like MySQL, PostgreSQL; NoSQL databases like MongoDB, Cassandra; Object-oriented DBMS; Hierarchical DBMS; Network DBMS; and Cloud databases like Amazon RDS, Google Cloud SQL.",
+      "createdAt": "2025-07-12T09:15:30.000Z"
+    }
+  ],
+  "os": [
+    {
+      "id": "1752311750000",
+      "question": "What is an Operating System?",
+      "answer": "An Operating System (OS) is system software that manages computer hardware and software resources. It provides common services for computer programs, handles memory management, process scheduling, file systems, and acts as an interface between users and hardware.",
+      "createdAt": "2025-07-12T09:15:50.000Z"
+    },
+    {
+      "id": "1752311770000",
+      "question": "What are the types of Operating Systems?",
+      "answer": "Types of OS include: Batch OS, Time-sharing OS, Distributed OS, Real-time OS, Multi-user OS, Multi-processing OS, and Mobile OS. Examples include Windows, Linux, macOS, Android, and iOS.",
+      "createdAt": "2025-07-12T09:16:10.000Z"
+    }
+  ],
+  "cn": [
+    {
+      "id": "1752311790000",
+      "question": "What is Computer Networking?",
+      "answer": "Computer Networking is the practice of connecting computers and devices to share resources, data, and communicate. It involves protocols, hardware, and software that enable data transmission across local and wide area networks.",
+      "createdAt": "2025-07-12T09:16:30.000Z"
+    },
+    {
+      "id": "1752311810000",
+      "question": "What are the OSI layers?",
+      "answer": "The OSI (Open Systems Interconnection) model has 7 layers: Physical Layer, Data Link Layer, Network Layer, Transport Layer, Session Layer, Presentation Layer, and Application Layer. Each layer has specific functions in network communication.",
+      "createdAt": "2025-07-12T09:16:50.000Z"
+    }
+  ],
+  "js": [
+    {
+      "id": "1752311830000",
+      "question": "What is JavaScript?",
+      "answer": "JavaScript is a high-level, interpreted programming language primarily used for web development. It enables interactive web pages, handles client-side scripting, and can also be used for server-side development with Node.js.",
+      "createdAt": "2025-07-12T09:17:10.000Z"
+    },
+    {
+      "id": "1752311850000",
+      "question": "What are JavaScript data types?",
+      "answer": "JavaScript has primitive data types: Number, String, Boolean, Undefined, Null, Symbol, and BigInt. It also has non-primitive types like Object, Array, and Function. JavaScript is dynamically typed, meaning variables can hold different types of values.",
+      "createdAt": "2025-07-12T09:17:30.000Z"
+    }
+  ],
+  "react": [
+    {
+      "id": "1752311870000",
+      "question": "What is React?",
+      "answer": "React is a JavaScript library for building user interfaces, developed by Facebook. It uses a component-based architecture, virtual DOM for efficient updates, and follows a declarative programming paradigm for creating interactive web applications.",
+      "createdAt": "2025-07-12T09:17:50.000Z"
+    },
+    {
+      "id": "1752311890000",
+      "question": "What are React Hooks?",
+      "answer": "React Hooks are functions that allow you to use state and other React features in functional components. Common hooks include useState for state management, useEffect for side effects, useContext for context API, and useReducer for complex state logic.",
+      "createdAt": "2025-07-12T09:18:10.000Z"
+    }
+  ],
+  "api": [
+    {
+      "id": "1752311910000",
+      "question": "What is an API?",
+      "answer": "API (Application Programming Interface) is a set of protocols, tools, and definitions that allow different software applications to communicate with each other. It defines methods for data exchange and specifies how software components should interact.",
+      "createdAt": "2025-07-12T09:18:30.000Z"
+    },
+    {
+      "id": "1752311930000",
+      "question": "What are REST APIs?",
+      "answer": "REST (Representational State Transfer) APIs are architectural style for web services that use HTTP methods (GET, POST, PUT, DELETE) to perform operations. They are stateless, cacheable, and use standard HTTP status codes for responses.",
+      "createdAt": "2025-07-12T09:18:50.000Z"
+    }
+  ],
+  "aws": [
+    {
+      "id": "1752311950000",
+      "question": "What is AWS?",
+      "answer": "AWS (Amazon Web Services) is a cloud computing platform that provides on-demand cloud services including computing power, storage, databases, networking, and machine learning. It offers scalable and cost-effective solutions for businesses and developers.",
+      "createdAt": "2025-07-12T09:19:10.000Z"
+    },
+    {
+      "id": "1752311970000",
+      "question": "What are core AWS services?",
+      "answer": "Core AWS services include: EC2 (Elastic Compute Cloud) for virtual servers, S3 (Simple Storage Service) for object storage, RDS (Relational Database Service), Lambda for serverless computing, VPC for networking, and IAM for identity and access management.",
+      "createdAt": "2025-07-12T09:19:30.000Z"
+    }
+  ],
+  "docker": [
+    {
+      "id": "1752311990000",
+      "question": "What is Docker?",
+      "answer": "Docker is a containerization platform that packages applications and their dependencies into lightweight, portable containers. It enables consistent deployment across different environments and simplifies application development, testing, and deployment processes.",
+      "createdAt": "2025-07-12T09:19:50.000Z"
+    },
+    {
+      "id": "1752312010000",
+      "question": "What are Docker containers vs images?",
+      "answer": "Docker images are read-only templates that contain application code, runtime, libraries, and dependencies. Docker containers are running instances of images that can be started, stopped, and deleted. Images are used to create containers.",
+      "createdAt": "2025-07-12T09:20:10.000Z"
+    }
+  ],
+  "java1": [
+    {
+      "id": "1752311610232",
+      "question": "What is Java?",
+      "answer": "Java is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle). It follows the principle of 'write once, run anywhere' (WORA), meaning Java code can run on any platform that has a Java Virtual Machine (JVM). Java is widely used for enterprise applications, web development, mobile applications (Android), and desktop applications.",
+      "createdAt": "2025-07-12T09:13:30.232Z"
+    },
+    {
+      "id": "1752311690749",
+      "question": "What are the main features of Java?",
+      "answer": "Java's main features include: Platform Independence (runs on JVM), Object-Oriented Programming (encapsulation, inheritance, polymorphism), Automatic Memory Management (garbage collection), Strong Type System, Multithreading support, Security features, Rich API libraries, and Robustness with exception handling.",
+      "createdAt": "2025-07-12T09:14:50.749Z"
+    }
+  ],
+  "dbms1": [
+    {
+      "id": "1752311710000",
+      "question": "What is DBMS?",
+      "answer": "DBMS (Database Management System) is software that manages databases and provides an interface for users to interact with data. It handles data storage, retrieval, organization, and security while ensuring data integrity and consistency.",
+      "createdAt": "2025-07-12T09:15:10.000Z"
+    },
+    {
+      "id": "1752311730000",
+      "question": "What are the types of DBMS?",
+      "answer": "Types of DBMS include: Relational DBMS (RDBMS) like MySQL, PostgreSQL; NoSQL databases like MongoDB, Cassandra; Object-oriented DBMS; Hierarchical DBMS; Network DBMS; and Cloud databases like Amazon RDS, Google Cloud SQL.",
+      "createdAt": "2025-07-12T09:15:30.000Z"
+    }
+  ],
+  "os1": [
+    {
+      "id": "1752311750000",
+      "question": "What is an Operating System?",
+      "answer": "An Operating System (OS) is system software that manages computer hardware and software resources. It provides common services for computer programs, handles memory management, process scheduling, file systems, and acts as an interface between users and hardware.",
+      "createdAt": "2025-07-12T09:15:50.000Z"
+    },
+    {
+      "id": "1752311770000",
+      "question": "What are the types of Operating Systems?",
+      "answer": "Types of OS include: Batch OS, Time-sharing OS, Distributed OS, Real-time OS, Multi-user OS, Multi-processing OS, and Mobile OS. Examples include Windows, Linux, macOS, Android, and iOS.",
+      "createdAt": "2025-07-12T09:16:10.000Z"
+    }
+  ],
+  "cn1": [
+    {
+      "id": "1752311790000",
+      "question": "What is Computer Networking?",
+      "answer": "Computer Networking is the practice of connecting computers and devices to share resources, data, and communicate. It involves protocols, hardware, and software that enable data transmission across local and wide area networks.",
+      "createdAt": "2025-07-12T09:16:30.000Z"
+    },
+    {
+      "id": "1752311810000",
+      "question": "What are the OSI layers?",
+      "answer": "The OSI (Open Systems Interconnection) model has 7 layers: Physical Layer, Data Link Layer, Network Layer, Transport Layer, Session Layer, Presentation Layer, and Application Layer. Each layer has specific functions in network communication.",
+      "createdAt": "2025-07-12T09:16:50.000Z"
+    }
+  ],
+  "js1": [
+    {
+      "id": "1752311830000",
+      "question": "What is JavaScript?",
+      "answer": "JavaScript is a high-level, interpreted programming language primarily used for web development. It enables interactive web pages, handles client-side scripting, and can also be used for server-side development with Node.js.",
+      "createdAt": "2025-07-12T09:17:10.000Z"
+    },
+    {
+      "id": "1752311850000",
+      "question": "What are JavaScript data types?",
+      "answer": "JavaScript has primitive data types: Number, String, Boolean, Undefined, Null, Symbol, and BigInt. It also has non-primitive types like Object, Array, and Function. JavaScript is dynamically typed, meaning variables can hold different types of values.",
+      "createdAt": "2025-07-12T09:17:30.000Z"
+    }
+  ],
+  "react1": [
+    {
+      "id": "1752311870000",
+      "question": "What is React?",
+      "answer": "React is a JavaScript library for building user interfaces, developed by Facebook. It uses a component-based architecture, virtual DOM for efficient updates, and follows a declarative programming paradigm for creating interactive web applications.",
+      "createdAt": "2025-07-12T09:17:50.000Z"
+    },
+    {
+      "id": "1752311890000",
+      "question": "What are React Hooks?",
+      "answer": "React Hooks are functions that allow you to use state and other React features in functional components. Common hooks include useState for state management, useEffect for side effects, useContext for context API, and useReducer for complex state logic.",
+      "createdAt": "2025-07-12T09:18:10.000Z"
+    }
+  ],
+  "api1": [
+    {
+      "id": "1752311910000",
+      "question": "What is an API?",
+      "answer": "API (Application Programming Interface) is a set of protocols, tools, and definitions that allow different software applications to communicate with each other. It defines methods for data exchange and specifies how software components should interact.",
+      "createdAt": "2025-07-12T09:18:30.000Z"
+    },
+    {
+      "id": "1752311930000",
+      "question": "What are REST APIs?",
+      "answer": "REST (Representational State Transfer) APIs are architectural style for web services that use HTTP methods (GET, POST, PUT, DELETE) to perform operations. They are stateless, cacheable, and use standard HTTP status codes for responses.",
+      "createdAt": "2025-07-12T09:18:50.000Z"
+    }
+  ],
+  "aws1": [
+    {
+      "id": "1752311950000",
+      "question": "What is AWS?",
+      "answer": "AWS (Amazon Web Services) is a cloud computing platform that provides on-demand cloud services including computing power, storage, databases, networking, and machine learning. It offers scalable and cost-effective solutions for businesses and developers.",
+      "createdAt": "2025-07-12T09:19:10.000Z"
+    },
+    {
+      "id": "1752311970000",
+      "question": "What are core AWS services?",
+      "answer": "Core AWS services include: EC2 (Elastic Compute Cloud) for virtual servers, S3 (Simple Storage Service) for object storage, RDS (Relational Database Service), Lambda for serverless computing, VPC for networking, and IAM for identity and access management.",
+      "createdAt": "2025-07-12T09:19:30.000Z"
+    }
+  ],
+  "docker1": [
+    {
+      "id": "1752311990000",
+      "question": "What is Docker?",
+      "answer": "Docker is a containerization platform that packages applications and their dependencies into lightweight, portable containers. It enables consistent deployment across different environments and simplifies application development, testing, and deployment processes.",
+      "createdAt": "2025-07-12T09:19:50.000Z"
+    },
+    {
+      "id": "1752312010000",
+      "question": "What are Docker containers vs images?",
+      "answer": "Docker images are read-only templates that contain application code, runtime, libraries, and dependencies. Docker containers are running instances of images that can be started, stopped, and deleted. Images are used to create containers.",
+      "createdAt": "2025-07-12T09:20:10.000Z"
+    }
+  ]
+}
