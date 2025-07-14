@@ -1,0 +1,53 @@
+.home-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 40px;
+}
+
+.welcome-card h2 {
+  font-size: 36px;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.welcome-card .highlight {
+  color: #2563eb;
+}
+
+.welcome-card p {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.faq-card-wrapper {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

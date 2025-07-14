@@ -5,7 +5,7 @@ exports.createPost = async (req, res) => {
   try {
     const { question, answer, section } = req.body;
     const author = req.user.id;
-
+    section.toUpperCase;
     const post = await Post.create({ question, answer, section, author });
 
     await User.findByIdAndUpdate(author, {
@@ -19,26 +19,78 @@ exports.createPost = async (req, res) => {
   }
 };
 
-// exports.getSections = async (req, res) => {
-//   try {
 
-//     const sections = await User.find({ sections });
-//     res.json(posts);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-
-exports.getPostsBySection = async (req, res) => {
+exports.getAllPosts = async (req, res) => {
   try {
-    const { section } = req.params;
-    const posts = await Post.find({ section }).populate('author', 'username');
-    res.json(posts);
+    const posts = await Post.find().populate('author', 'username'); // Optional: populate author details
+    res.status(200).json(posts);
   } catch (err) {
+    console.error('Error fetching posts:', err);
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getUserPosts = async (req, res) => {
+  try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
+    const user = await User.findById(req.user.id)
+      .populate('posts') // this populates the full Post objects
+      .select('posts');
+      console.log(user);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json(user.posts);
+  } catch (err) {
+    console.error('Error fetching user posts:', err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+exports.getUserSectionPosts = async (req, res) => {
+  try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
+
+    const section = req.params.section;
+
+    const posts = await Post.find({
+      author: req.user.id,
+      section: section
+    });
+
+    res.status(200).json(posts);
+  } catch (err) {
+    console.error('Error fetching posts by section:', err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
+// exports.getPostsBySection = async (req, res) => {
+//   try {
+//     const { author, section } = req.params;
+
+//     // Find posts with matching author ID and section (case-insensitive match)
+//     const posts = await Post.find({
+//       // author: author, // author is ObjectId in string format
+//       section: section.toUpperCase(), // normalize section casing
+//     }).populate('author', 'username');
+
+//     res.json(posts);
+//   } catch (err) {
+//     console.error('Error fetching posts by section:', err);
+//     res.status(500).json({ error: err.message });
+//   }
+// };
 
 exports.editPost = async (req, res) => {
   try {

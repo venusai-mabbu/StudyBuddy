@@ -1,0 +1,35 @@
+527d067 -- local project with static json data
+8e14742 -- worked on the backend
+bae5e8a -- working backend and static frontend
+backup file -- backend good frontend partially good 
+
+
+venusaimabbu2003
+cTiWZDnlVvyB4tB5
+mongodb+srv://venusaimabbu2003:cTiWZDnlVvyB4tB5@cluster0.bybic2j.mongodb.net/
+mongodb+srv://venusaimabbu2003:<db_password>@cluster0.bybic2j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+user schema
+{
+    _id: ,ObjectId,
+    username:string,
+    password:string,
+    email:string,
+    is_public:boolean,
+    sections:[string],  //what the sections a user created
+
+    saves:[string], // id's of posts
+    posts:{string:[string]}    //section:[array of posts under the section]
+}
+
+posts schema
+{
+    _id:Object_id,
+    question:string,
+    answer:string,
+    createdAt: { type: Date, default: Date.now },
+    upvotes:number,
+    downvotes:number,
+    section:string
+
+}

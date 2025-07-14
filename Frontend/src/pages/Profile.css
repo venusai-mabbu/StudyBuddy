@@ -1,0 +1,261 @@
+.profile-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-header {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.profile-header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.profile-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.profile-top-row h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile-private-btn {
+  padding: 10px 16px;
+  background-color: #f97316;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.profile-private-btn:hover {
+  background-color: #ea580c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.label {
+  font-weight: 600;
+  color: #444;
+}
+
+.bold {
+  font-weight: 600;
+  color: #333;
+}
+
+.profile-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-off {
+  font-weight: 500;
+  color: #444;
+}
+
+.section-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-tag {
+  padding: 6px 12px;
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 9999px;
+  cursor: default;
+  transition: 0.3s ease;
+}
+
+.section-tag:hover {
+  background-color: #bfdbfe;
+  transform: scale(1.05);
+}
+
+.no-saves {
+  font-style: italic;
+  color: #666;
+}
+
+.input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.input-group input {
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.input-group button {
+  padding: 6px 10px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Profile Action Buttons */
+.profile-private-btn,
+.profile-action-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin: 5px 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-private-btn:hover,
+.profile-action-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Input Group for Editing */
+.input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.input-group input {
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Buttons inside input group */
+.input-group button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.input-group button:hover {
+  background-color: #218838;
+}
+.input-group .cancel-btn {
+  background-color: #dc3545;
+}
+
+.input-group .cancel-btn:hover {
+  background-color: #c82333;
+}
+/* ===== Update Buttons (Username/Password) ===== */
+.update-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.update-button:hover {
+  background-color: #0056b3;
+}
+
+/* ===== Input Forms for Username and Password Updates ===== */
+.input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.input-group input {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+/* Submit buttons inside input-group */
+.submit-button {
+  align-self: flex-start;
+  background-color: #28a745;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+input::placeholder{
+  color: #333;
+}

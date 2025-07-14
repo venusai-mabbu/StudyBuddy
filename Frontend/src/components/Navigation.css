@@ -1,0 +1,125 @@
+/* Navigation.css */
+.navigation {
+  width: 100%;
+  padding: 24px 16px;
+}
+
+.navigation-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.navigation-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.navigation-link {
+  padding: 8px 24px;
+  border-radius: 9999px;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transform: scale(1);
+  transition: all 0.3s ease-out;
+  border: 2px solid transparent;
+  display: inline-block;
+  position: relative;
+}
+
+.navigation-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navigation-link:active {
+  transform: scale(0.95);
+}
+
+/* Blue color variant */
+.navigation-link-blue {
+  background-color: #3b82f6;
+  border-color: #60a5fa;
+}
+
+.navigation-link-blue:hover {
+  background-color: #2563eb;
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+/* Green color variant */
+.navigation-link-green {
+  background-color: #10b981;
+  border-color: #34d399;
+}
+
+.navigation-link-green:hover {
+  background-color: #059669;
+  border-color: rgba(52, 211, 153, 0.5);
+}
+
+/* Green dark color variant */
+.navigation-link-green-dark {
+  background-color: #059669;
+  border-color: #10b981;
+}
+
+.navigation-link-green-dark:hover {
+  background-color: #047857;
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Red color variant */
+.navigation-link-red {
+  background-color: #ef4444;
+  border-color: #f87171;
+}
+
+.navigation-link-red:hover {
+  background-color: #dc2626;
+  border-color: rgba(248, 113, 113, 0.5);
+}
+
+/* Active state */
+.navigation-link-active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navigation {
+    padding: 20px 12px;
+  }
+  
+  .navigation-items {
+    gap: 8px;
+  }
+  
+  .navigation-link {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    padding: 16px 8px;
+  }
+  
+  .navigation-items {
+    gap: 6px;
+  }
+  
+  .navigation-link {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+}

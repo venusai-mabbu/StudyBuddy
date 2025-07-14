@@ -10,8 +10,15 @@ app.use(cookieParser());
 const authRoutes = require('./routes/authRoutes');
 const postRoutes = require('./routes/postRoutes');
 
+
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true               
+}));
+
+// Other middlewares
 app.use(express.json());
-app.use(cors());
+
 app.use('/auth', authRoutes);
 app.use('/posts', postRoutes);
 

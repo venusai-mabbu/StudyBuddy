@@ -1,0 +1,65 @@
+/* FAQCard.css */
+.faq-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  transform: translateY(0) scale(1);
+}
+
+.faq-card:hover {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  border-color: #93c5fd;
+  transform: translateY(-8px) scale(1.05);
+}
+
+.faq-card-content {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.faq-card-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-card:hover .faq-card-icon {
+  transform: scale(1.1);
+}
+
+.faq-card-text {
+  flex: 1;
+}
+
+.faq-card-title {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 18px;
+  margin: 0 0 4px 0;
+  transition: color 0.3s ease;
+}
+
+.faq-card:hover .faq-card-title {
+  color: #2563eb;
+}
+
+.faq-card-count {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 0;
+}

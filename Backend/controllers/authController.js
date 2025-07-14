@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
 
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   });
-  res.json({ message: "Logged in" });
+  res.json({ message: "Logged in" ,token:token,userID:user._id,email:user.email,sections:user.sections});
 
     // res.json({ token });
   } catch (err) {
@@ -38,25 +38,69 @@ exports.login = async (req, res) => {
   }
 };
 
+// controllers/authController.js
+
+exports.logout = (req, res) => {
+  res.clearCookie('token'); // Clear the JWT cookie
+  return res.status(200).json({ message: "Logged out successfully" });
+};
+
+
 exports.getProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('username email is_public sections saves');
-    console.log(user);
-    if (!user) return res.status(404).json({ message: "User not found" });
+    // Check if user ID exists in request
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
 
-    res.json({
+    const user = await User.findById(req.user.id).select('username email is_public sections saves');
+    
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Ensure sections and saves are arrays
+    const sections = Array.isArray(user.sections) ? user.sections : [];
+    const saves = Array.isArray(user.saves) ? user.saves : [];
+
+    const profileData = {
       username: user.username,
       email: user.email,
-      is_public: user.is_public,
-      sections: user.sections,
-      sectionsCount: user.sections.length,
-      saves:user.saves
-    });
+      is_public: user.is_public || false,
+      sections: sections,
+      sectionsCount: sections.length,
+      saves: saves
+    };
+
+    res.json("sunitha"+profileData);
   } catch (err) {
+    console.error('Profile fetch error:', err);
     res.status(500).json({ error: err.message });
   }
 };
 
+
+exports.getSections = async(req,res)=> {
+  try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
+
+    const sections = await User.findById(req.user.id).select('sections');
+    
+    if (!sections) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+
+    res.json(sections);
+  } catch (err) {
+    console.error('Section fetch error:', err);
+    res.status(500).json({ error: err.message });
+  }
+  
+
+}
 
 exports.updateUsername = async (req, res) => {
   try {
