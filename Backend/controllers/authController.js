@@ -72,7 +72,7 @@ exports.getProfile = async (req, res) => {
       saves: saves
     };
 
-    res.json("sunitha"+profileData);
+    res.json(profileData);
   } catch (err) {
     console.error('Profile fetch error:', err);
     res.status(500).json({ error: err.message });

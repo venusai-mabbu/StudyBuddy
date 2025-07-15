@@ -3,22 +3,42 @@ const User = require('../models/User');
 
 exports.createPost = async (req, res) => {
   try {
-    const { question, answer, section } = req.body;
     const author = req.user.id;
-    section.toUpperCase;
-    const post = await Post.create({ question, answer, section, author });
+    const postsData = Array.isArray(req.body) ? req.body : [req.body];
 
-    await User.findByIdAndUpdate(author, {
-      $push: { [`posts.${section}`]: post._id },
-      $addToSet: { sections: section }
-    });
+    const createdPosts = [];
 
-    res.status(201).json(post);
+    for (const item of postsData) {
+      const { question, answer, section } = item;
+
+      if (!question || !answer || !section) {
+        return res.status(400).json({ error: "Each post must include question, answer, and section." });
+      }
+
+      const upperSection = section;
+
+      const post = await Post.create({
+        question,
+        answer,
+        section: upperSection,
+        author
+      });
+
+      await User.findByIdAndUpdate(author, {
+        $push: { [`posts.${upperSection}`]: post._id },
+        $addToSet: { sections: upperSection }
+      });
+
+      createdPosts.push(post);
+    }
+
+    // Return one object or array depending on input
+    res.status(201).json(Array.isArray(req.body) ? createdPosts : createdPosts[0]);
+
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
-
 
 exports.getAllPosts = async (req, res) => {
   try {
@@ -51,7 +71,6 @@ exports.getUserPosts = async (req, res) => {
   }
 };
 
-
 exports.getUserSectionPosts = async (req, res) => {
   try {
     if (!req.user || !req.user.id) {
@@ -71,26 +90,6 @@ exports.getUserSectionPosts = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-
-
-
-// exports.getPostsBySection = async (req, res) => {
-//   try {
-//     const { author, section } = req.params;
-
-//     // Find posts with matching author ID and section (case-insensitive match)
-//     const posts = await Post.find({
-//       // author: author, // author is ObjectId in string format
-//       section: section.toUpperCase(), // normalize section casing
-//     }).populate('author', 'username');
-
-//     res.json(posts);
-//   } catch (err) {
-//     console.error('Error fetching posts by section:', err);
-//     res.status(500).json({ error: err.message });
-//   }
-// };
 
 exports.editPost = async (req, res) => {
   try {
@@ -120,7 +119,6 @@ exports.deletePost = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
 
 exports.upvotePost = async (req, res) => {
   try {

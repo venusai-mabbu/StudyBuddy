@@ -143,6 +143,7 @@ const Profile = () => {
           <div className="info-row">
             <div className="label">Sections:</div>
             <div className="section-tags">
+              {console.log("Now"+user)}
               {user.sections.map((section, index) => (
                 <span key={index} className="section-tag">
                   {section}

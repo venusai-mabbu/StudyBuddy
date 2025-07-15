@@ -1,22 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import FAQCard from '../components/FAQCard';
-import { useFAQs } from '../hooks/useFAQs';
 import { useAuth } from '../context/useAuth'; // ✅ Import Auth
 import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { getFAQCounts } = useFAQs();
-  const { auth } = useAuth(); // ✅ Get user sections
-  const counts = getFAQCounts();
 
-  // Build categories from user sections
+  const { auth } = useAuth(); // ✅ Get user sections
+
   const categories = (auth.sections || []).map((section) => ({
     title: section,
-    path: `/${section.toLowerCase()}`,
+    path: `/section/${section}`,
     icon: section[0]?.toUpperCase() || 'S',
-    count: counts[section.toUpperCase()] || 0
+    // count: counts[section.toUpperCase()] || 0
   }));
 
   return (

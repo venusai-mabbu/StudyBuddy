@@ -6,7 +6,7 @@ import './Auth.css';
 
 const LoginPage = () => {
   const [form, setForm] = useState({ username: '', password: '' });
-  const { login } = useAuth();
+  const { login,auth } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,16 +19,17 @@ const LoginPage = () => {
           password: form.password
         },
         {
-          withCredentials: true // ✅ send cookies if needed
+          withCredentials: true 
         }
       );
 
 
       // ✅ Destructure token, userId, and sections from response
       const { token, userID, sections } = res.data;
-      console.log("here"+userID);
+      console.log("here1"+JSON.stringify(auth));
       // ✅ Pass sections into login context
       login(token, userID, sections);
+      console.log("here2"+JSON.stringify(auth));
 
       // ✅ Redirect to home
       navigate('/');

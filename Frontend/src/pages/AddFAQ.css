@@ -1,91 +1,73 @@
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px;
+/* AddFAQ.css */
+
+.faq-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.3s ease-in-out;
 }
 
-.form{
- width: 100%;
- margin: 0px;
-}
-/* Header Card */
-.header-card {
-  background: #ffffffcc;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
+.faq-header h1 {
   text-align: center;
-}
-
-.header-card h1 {
-  font-size: 24px;
+  margin-bottom: 1.5rem;
   color: #333;
 }
 
-/* Form Card */
-.form-card {
-  background: #f9f9f9;
-  padding: 0px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
+.faq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* Form Group */
 .form-group {
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
 .form-group label {
+  margin-bottom: 0.5rem;
   font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
+  color: #555;
 }
 
-.form-group select,
 .form-group textarea {
-  padding: 10px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  padding: 0.8rem;
   border-radius: 8px;
-  resize: none;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 1rem;
+  transition: border 0.3s;
 }
 
-.form-group select:hover,
-.form-group textarea:hover {
-  border-color: #888;
+.form-group textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
-/* Button */
-.form-group button {
-  background: linear-gradient(to right, #3b82f6, #2563eb);
-  color: white;
-  font-weight: bold;
-  padding: 12px;
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: 0.3s ease-in-out;
-}
-
-.form-group button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
-/* Footer */
-.footer {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.footer p {
-  font-size: 14px;
-  background: #222;
+  border-radius: 8px;
   color: white;
-  padding: 10px;
-  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.faq-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
 }

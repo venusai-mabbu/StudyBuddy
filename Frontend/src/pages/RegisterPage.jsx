@@ -20,7 +20,7 @@ const RegisterPage = () => {
     email: form.email
   },
   {
-    withCredentials: true // ✅ enables cookie sending
+    withCredentials: true 
   }
 );
 

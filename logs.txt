@@ -4,6 +4,10 @@ bae5e8a -- working backend and static frontend
 backup file -- backend good frontend partially good 
 
 
+
+70de0e4  -- working fine till display of posts and authenticaton
+
+
 venusaimabbu2003
 cTiWZDnlVvyB4tB5
 mongodb+srv://venusaimabbu2003:cTiWZDnlVvyB4tB5@cluster0.bybic2j.mongodb.net/

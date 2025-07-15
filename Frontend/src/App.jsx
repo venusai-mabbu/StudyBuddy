@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import FAQList from './pages/FAQList';
 import AddFAQ from './pages/AddFAQ';
+import NotFoundPage from './pages/NotFound';
 
 const App = () => {
   return (
@@ -20,10 +21,12 @@ const App = () => {
         {/* Routes with Header */}
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+         <Route path="/profile" element={<Profile />} />
           <Route path="/post" element={<AddFAQ />} />
-          <Route path="/:category" element={<FAQList />} />
+          <Route path="/section/:category" element={<FAQList />} />
         </Route>
+        
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

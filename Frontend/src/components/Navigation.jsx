@@ -14,7 +14,7 @@ const Navigation = () => {
 
   const sectionToItem = (section) => ({
     label: section.toUpperCase(),
-    path: `/${section}`,
+    path: `/section/${section}`,
     category: section.toUpperCase(),
     color: 'green'
   });
