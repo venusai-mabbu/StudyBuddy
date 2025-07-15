@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       userID,
       sections
     });
-    console.log("login track",auth);
+
   };
 
   const logout = () => {

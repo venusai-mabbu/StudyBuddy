@@ -6,7 +6,7 @@ backup file -- backend good frontend partially good
 
 
 70de0e4  -- working fine till display of posts and authenticaton
-
+3841f20  -- fixed reload problem
 
 venusaimabbu2003
 cTiWZDnlVvyB4tB5

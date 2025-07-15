@@ -6,7 +6,7 @@ import './Auth.css';
 
 const LoginPage = () => {
   const [form, setForm] = useState({ username: '', password: '' });
-  const { login,auth } = useAuth();
+  const { login} = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,12 +26,9 @@ const LoginPage = () => {
 
       // ✅ Destructure token, userId, and sections from response
       const { token, userID, sections } = res.data;
-      console.log("here1"+JSON.stringify(auth));
-      // ✅ Pass sections into login context
-      login(token, userID, sections);
-      console.log("here2"+JSON.stringify(auth));
 
-      // ✅ Redirect to home
+      login(token, userID, sections);
+
       navigate('/');
     } catch (err) {
       console.error('Login failed:', err);

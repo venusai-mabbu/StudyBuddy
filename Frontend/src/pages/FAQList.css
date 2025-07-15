@@ -60,9 +60,22 @@
 
 .faq-controls {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
 }
+.toolbar
+{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: last baseline;
+  justify-content: space-between;
+  color: #000;;
+}
+/* .toolbar p
+{
+
+} */
 
 .remove-button {
   width: 32px;
@@ -110,6 +123,60 @@
   line-height: 1.6;
   margin: 0;
 }
+.faq-answer .toolbar p {
+  color: red; 
+}
+
+
+
+.faq-answer {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.upvote-bar {
+  display: flex;
+  gap: 3px;
+  margin-top: 0.75rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.upvote-bar button {
+  font-size: 15px;
+  font-weight: bold;
+  background: transparent;
+  border: 2px solid black;
+  border-style: outset;
+  cursor: pointer;
+  padding: 0px;
+  height: 25px;
+  width: 25px;
+  margin: 0px;
+  border-radius: 20%;
+  transition: background 0.2s ease;
+}
+
+.upvote-bar button:hover {
+  background-color: #eaeaea;
+  transform: scale(1.1);
+}
+
+.upvote-bar button:active {
+  transform: scale(0.95);
+  background-color: #dcdcdc;
+}
+
+.no-posts {
+  text-align: center;
+  color: gray;
+  margin-top: 2rem;
+}
+
+
 
 @keyframes fadeInUp {
   from {

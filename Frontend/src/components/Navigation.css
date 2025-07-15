@@ -87,10 +87,10 @@
 
 /* Active state */
 .navigation-link-active {
-  transform: scale(1.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
+  transform: scale(1.1);
+  box-shadow: 4px 4px 20px rgb(148, 161, 153);
+  outline: 6px solid rgb(217, 212, 212);
+  outline-offset: 1px;
 }
 
 /* Responsive Design */

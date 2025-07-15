@@ -6,7 +6,6 @@ import { useAuth } from '../context/useAuth'; // ✅ import your custom auth hoo
 const Header = () => {
   const { auth, logout } = useAuth();
   const navigate = useNavigate();
-  console.log(auth);
 
   const handleLogout = () => {
     logout();
@@ -28,7 +27,6 @@ const Header = () => {
           <div className="header-actions">
             {auth.is_logged_in ? (
               <>
-                {  console.log(auth)}
                 <Link to="/profile" className="btn-profile">Profile</Link>
                 <button onClick={handleLogout} className="btn-logout">Logout</button>
               </>

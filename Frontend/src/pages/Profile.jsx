@@ -26,6 +26,7 @@ const Profile = () => {
           },
           withCredentials: true
         });
+        console.log(res.data);
         setUser(res.data);
       } catch (err) {
         console.error('Failed to fetch profile:', err.response?.data || err.message);
@@ -143,7 +144,6 @@ const Profile = () => {
           <div className="info-row">
             <div className="label">Sections:</div>
             <div className="section-tags">
-              {console.log("Now"+user)}
               {user.sections.map((section, index) => (
                 <span key={index} className="section-tag">
                   {section}
@@ -155,7 +155,14 @@ const Profile = () => {
           <div className="info-row">
             <span className="label">Saves:</span>
             {user.saves && user.saves.length > 0 ? (
-              <span>{user.saves.length}</span>
+              // <span>{user.saves.length}</span>
+
+            <span>
+                {user.saves.map((element, index) => (
+                  <span key={index}>{"index:"+index+" "+element}<br></br></span>
+                ))}
+            </span>
+
             ) : (
               <span className="no-saves">No saves available</span>
             )}

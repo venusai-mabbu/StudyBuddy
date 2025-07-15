@@ -4,6 +4,7 @@ const User = require('../models/User');
 exports.createPost = async (req, res) => {
   try {
     const author = req.user.id;
+    console.log(author);
     const postsData = Array.isArray(req.body) ? req.body : [req.body];
 
     const createdPosts = [];
@@ -150,8 +151,10 @@ exports.downvotePost = async (req, res) => {
 
 exports.savePost = async (req, res) => {
   try {
+    console.log("user",req.user.id);
     const user = await User.findById(req.user.id);
     const postId = req.params.id;
+    console.log("venusai"+user);
 
     if (!user.saves.includes(postId)) {
       user.saves.push(postId);
