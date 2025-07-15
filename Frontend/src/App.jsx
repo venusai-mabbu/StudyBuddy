@@ -8,25 +8,26 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import FAQList from './pages/FAQList';
 import AddFAQ from './pages/AddFAQ';
-import NotFoundPage from './pages/NotFound';
+import NotFoundPage from './pages/NotFound'; // ✅ Ensure correct file name
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Routes without Header */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        {/* Public Routes (No Header) */}
 
-        {/* Routes with Header */}
+        {/* Protected Routes (With Header Layout) */}
         <Route element={<Layout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<Home />} />
-         <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/post" element={<AddFAQ />} />
           <Route path="/section/:category" element={<FAQList />} />
         </Route>
-        
-        <Route path="/*" element={<NotFoundPage />} />
+
+        {/* Fallback 404 Route */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

@@ -1,190 +1,129 @@
 .faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 900px; 
+  margin: auto;
+  padding: 2rem 1rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .faq-header {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-bottom: 24px;
   text-align: center;
-}
-
-.faq-header h1 {
-  font-size: 28px;
-  font-weight: bold;
-  color: #333;
-  text-transform: capitalize;
+  font-size: 2rem;
+  margin-bottom: 0rem;
+  color: #222;
 }
 
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
+
 
 .faq-item {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #ddd;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.5s ease-out;
-}
-
-.faq-question {
-  padding: 20px;
+  background: #d7dade;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, transform 0.2s ease;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.3s;
+  opacity: 0;
 }
 
-.faq-question:hover {
-  background: #f5f5f5;
+.faq-item.expanded {
+  background: #e3f2fd;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
 }
 
 .faq-question h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #222;
   margin: 0;
-  padding-right: 12px;
-  flex: 1;
-}
-
-.faq-controls {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-.toolbar
-{
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: last baseline;
-  justify-content: space-between;
-  color: #000;;
-}
-/* .toolbar p
-{
-
-} */
-
-.remove-button {
-  width: 32px;
-  height: 32px;
-  background: #ef4444;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.remove-button:hover {
-  background: #dc2626;
-  transform: scale(1.1);
-}
-
-.toggle-icon {
-  color: #3b82f6;
-  transition: transform 0.3s;
+  font-size: 1.1rem;
+  color: #0d47a1;
 }
 
 .faq-answer {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  padding: 0 20px;
-  border-top: 1px solid #eee;
-  background: rgba(249, 250, 251, 0.3);
-}
-
-.faq-answer.show {
-  max-height: 500px;
-  opacity: 1;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  margin-top: 5px;
+  line-height: 0.6rem;
+  animation: slideDown 0.3s ease;
 }
 
 .faq-answer p {
-  color: #444;
-  line-height: 1.6;
-  margin: 0;
-}
-.faq-answer .toolbar p {
-  color: red; 
+  margin: 0 0 0.75rem;
+  color: #333;
 }
 
-
-
-.faq-answer {
-  padding: 1rem;
-  background-color: #f9f9f9;
-  margin-top: 0.5rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.upvote-bar {
+.toolbar {
   display: flex;
-  gap: 3px;
-  margin-top: 0.75rem;
-  justify-content: flex-end;
-  align-items: center;
+  gap: 1rem;
 }
 
-.upvote-bar button {
-  font-size: 15px;
-  font-weight: bold;
+.toolbar button {
+  font-size: 1.2rem;
   background: transparent;
-  border: 2px solid black;
-  border-style: outset;
+  border: none;
   cursor: pointer;
-  padding: 0px;
-  height: 25px;
-  width: 25px;
-  margin: 0px;
-  border-radius: 20%;
-  transition: background 0.2s ease;
+  transition: transform 0.2s;
 }
 
-.upvote-bar button:hover {
-  background-color: #eaeaea;
-  transform: scale(1.1);
-}
-
-.upvote-bar button:active {
-  transform: scale(0.95);
-  background-color: #dcdcdc;
+.toolbar button:hover {
+  transform: scale(1.2);
 }
 
 .no-posts {
   text-align: center;
-  color: gray;
-  margin-top: 2rem;
+  color: #888;
+  font-size: 1rem;
 }
 
-
-
+/*Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 1.5rem;
+  }
+
+  .faq-header {
+    font-size: 1.5rem;
+  }
+
+  .faq-question h3 {
+    font-size: 1rem;
+  }
+}
+.delete-btn {
+  color: #e53935;
+  font-size: 1.2rem;
+  transition: transform 0.2s, color 0.3s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+  color: #b71c1c;
 }

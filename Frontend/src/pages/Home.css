@@ -1,53 +1,80 @@
 .home-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .welcome-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 40px 30px;
-  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  margin-bottom: 40px;
+  background: linear-gradient(to right, #e3f2fd, #fff);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease;
 }
 
 .welcome-card h2 {
-  font-size: 36px;
-  color: #1f2937;
-  margin-bottom: 16px;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #0d47a1;
 }
 
-.welcome-card .highlight {
-  color: #2563eb;
-}
-
-.welcome-card p {
-  font-size: 18px;
-  color: #6b7280;
-  line-height: 1.6;
+.highlight {
+  color: #1976d2;
+  font-weight: bold;
 }
 
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 .faq-card-wrapper {
   opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
+  animation: fadeInUp 0.5s ease forwards;
 }
 
+.no-sections {
+  text-align: center;
+  color: #999;
+  font-size: 1rem;
+  padding: 2rem 0;
+}
+
+/* Animations */
 @keyframes fadeInUp {
   from {
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .faq-grid {
+    gap: 1rem;
   }
 }

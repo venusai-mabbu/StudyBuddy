@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/useAuth'; // ✅ updated path
+import { useAuth } from '../context/useAuth';
 import axios from 'axios';
 import './Auth.css';
 
 const LoginPage = () => {
   const [form, setForm] = useState({ username: '', password: '' });
-  const { login} = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,21 +14,12 @@ const LoginPage = () => {
     try {
       const res = await axios.post(
         'http://localhost:3000/auth/login',
-        {
-          username: form.username,
-          password: form.password
-        },
-        {
-          withCredentials: true 
-        }
+        { username: form.username, password: form.password },
+        { withCredentials: true }
       );
 
-
-      // ✅ Destructure token, userId, and sections from response
       const { token, userID, sections } = res.data;
-
       login(token, userID, sections);
-
       navigate('/');
     } catch (err) {
       console.error('Login failed:', err);
@@ -37,10 +28,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="auth-wrapper">
+    <main className="auth-wrapper">
       <h1>Login to Your Account</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="text"
           placeholder="Username"
@@ -58,10 +49,10 @@ const LoginPage = () => {
         <button type="submit">Login</button>
       </form>
 
-      <h3 className="auth-footer">
+      <p className="auth-footer">
         Don't have an account? <Link to="/register">Register here</Link>
-      </h3>
-    </div>
+      </p>
+    </main>
   );
 };
 

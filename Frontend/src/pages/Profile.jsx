@@ -21,12 +21,9 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const res = await axios.get('http://localhost:3000/auth/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
+          headers: { Authorization: `Bearer ${token}` },
           withCredentials: true
         });
-        console.log(res.data);
         setUser(res.data);
       } catch (err) {
         console.error('Failed to fetch profile:', err.response?.data || err.message);
@@ -44,9 +41,7 @@ const Profile = () => {
         'http://localhost:3000/auth/toggle-public',
         {},
         {
-          headers: {
-            Authorization: `Bearer ${token}`
-          },
+          headers: { Authorization: `Bearer ${token}` },
           withCredentials: true
         }
       );
@@ -82,10 +77,7 @@ const Profile = () => {
     try {
       await axios.put(
         'http://localhost:3000/auth/update-password',
-        {
-          oldPassword,
-          newPassword
-        },
+        { oldPassword, newPassword },
         {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true
@@ -126,7 +118,6 @@ const Profile = () => {
             <div
               className="profile-status"
               onClick={handleToggleVisibility}
-              style={{ cursor: 'pointer' }}
               title="Click to toggle visibility"
             >
               <span>{user.is_public ? '☑' : '☐'}</span>
@@ -142,12 +133,10 @@ const Profile = () => {
           </div>
 
           <div className="info-row">
-            <div className="label">Sections:</div>
+            <span className="label">Sections:</span>
             <div className="section-tags">
               {user.sections.map((section, index) => (
-                <span key={index} className="section-tag">
-                  {section}
-                </span>
+                <span key={index} className="section-tag">{section}</span>
               ))}
             </div>
           </div>
@@ -155,65 +144,59 @@ const Profile = () => {
           <div className="info-row">
             <span className="label">Saves:</span>
             {user.saves && user.saves.length > 0 ? (
-              // <span>{user.saves.length}</span>
-
-            <span>
+              <span>
                 {user.saves.map((element, index) => (
-                  <span key={index}>{"index:"+index+" "+element}<br></br></span>
+                  <span key={index}>index:{index} {element}<br /></span>
                 ))}
-            </span>
-
+              </span>
             ) : (
               <span className="no-saves">No saves available</span>
             )}
           </div>
 
-          {/* Update Username Button */}
           <div className="info-row">
-  <button className="update-button" onClick={() => setShowUsernameForm(prev => !prev)}>
-    {showUsernameForm ? 'Cancel' : 'Update Username'}
-  </button>
-  {showUsernameForm && (
-    <div className="input-group username-input">
-      <input
-        type="text"
-        placeholder="Enter new username"
-        value={newUsername}
-        onChange={(e) => setNewUsername(e.target.value)}
-      />
-      <button className="submit-button" onClick={handleUpdateUsername}>Submit</button>
-    </div>
-  )}
-</div>
+            <button className="update-button" onClick={() => setShowUsernameForm(prev => !prev)}>
+              {showUsernameForm ? 'Cancel' : 'Update Username'}
+            </button>
+            {showUsernameForm && (
+              <div className="input-group username-input">
+                <input
+                  type="text"
+                  placeholder="Enter new username"
+                  value={newUsername}
+                  onChange={(e) => setNewUsername(e.target.value)}
+                />
+                <button className="submit-button" onClick={handleUpdateUsername}>Submit</button>
+              </div>
+            )}
+          </div>
 
-{/* Update Password Button */}
-<div className="info-row">
-  <button className="update-button" onClick={() => setShowPasswordForm(prev => !prev)}>
-    {showPasswordForm ? 'Cancel' : 'Update Password'}
-  </button>
-  {showPasswordForm && (
-    <div className="input-group password-input">
-      <input
-        type="password"
-        placeholder="Old password"
-        value={passwordData.oldPassword}
-        onChange={(e) =>
-          setPasswordData({ ...passwordData, oldPassword: e.target.value })
-        }
-      />
-      <input
-        type="password"
-        placeholder="New password"
-        value={passwordData.newPassword}
-        onChange={(e) =>
-          setPasswordData({ ...passwordData, newPassword: e.target.value })
-        }
-      />
-      <button className="submit-button" onClick={handleUpdatePassword}>Submit</button>
-    </div>
-  )}
-</div>
-
+          <div className="info-row">
+            <button className="update-button" onClick={() => setShowPasswordForm(prev => !prev)}>
+              {showPasswordForm ? 'Cancel' : 'Update Password'}
+            </button>
+            {showPasswordForm && (
+              <div className="input-group password-input">
+                <input
+                  type="password"
+                  placeholder="Old password"
+                  value={passwordData.oldPassword}
+                  onChange={(e) =>
+                    setPasswordData({ ...passwordData, oldPassword: e.target.value })
+                  }
+                />
+                <input
+                  type="password"
+                  placeholder="New password"
+                  value={passwordData.newPassword}
+                  onChange={(e) =>
+                    setPasswordData({ ...passwordData, newPassword: e.target.value })
+                  }
+                />
+                <button className="submit-button" onClick={handleUpdatePassword}>Submit</button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

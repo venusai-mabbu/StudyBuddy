@@ -30,7 +30,6 @@ const AddFAQ = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { section, question, answer } = formData;
-
     if (!section || !question || !answer) return;
 
     try {
@@ -42,7 +41,6 @@ const AddFAQ = () => {
           withCredentials: true
         }
       );
-
       console.log('FAQ added:', res.data);
       updateSections(section);
       setFormData({ section: '', question: '', answer: '' });
@@ -52,59 +50,52 @@ const AddFAQ = () => {
   };
 
   return (
-    <>
-    <div className="faq-container">
-      <div className="faq-header">
-        <h1>Add a New FAQ</h1>
-      </div>
+    <main className="faq-container">
+      <h1 className="faq-title">Add a New FAQ</h1>
 
       <form onSubmit={handleSubmit} className="faq-form">
-        <div className="form-group">
-          <label htmlFor="section">Section *</label>
+        <label>
+          Section *
           <CreatableSelect
-            id="section"
             options={sectionOptions}
             onChange={handleSectionChange}
             value={formData.section ? { value: formData.section, label: formData.section } : null}
             placeholder="Select or type a new section"
             isClearable
+            className="select-input"
           />
-        </div>
+        </label>
 
-        <div className="form-group">
-          <label htmlFor="question">Question *</label>
+        <label>
+          Question *
           <textarea
-            id="question"
             rows={3}
             value={formData.question}
             onChange={handleChange('question')}
             placeholder="Type your question here..."
             required
           />
-        </div>
+        </label>
 
-        <div className="form-group">
-          <label htmlFor="answer">Answer *</label>
+        <label>
+          Answer *
           <textarea
-            id="answer"
             rows={5}
             value={formData.answer}
             onChange={handleChange('answer')}
             placeholder="Type the answer here..."
             required
           />
-        </div>
+        </label>
 
         <button type="submit" className="submit-btn">Submit FAQ</button>
       </form>
 
       <footer className="faq-footer">
-        <p>© 2025 FAQ Hub. All rights reserved.</p>
+        © 2025 FAQ Hub. All rights reserved.
       </footer>
-    </div>
-</>
+    </main>
   );
-
 };
 
 export default AddFAQ;

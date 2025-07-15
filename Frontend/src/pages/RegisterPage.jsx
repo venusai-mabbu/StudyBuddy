@@ -9,39 +9,24 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // TODO: Implement registration logic
     try {
-    const res = await axios.post(
-  'http://localhost:3000/auth/register',
-  {
-    username: form.username,
-    password: form.password,
-    email: form.email
-  },
-  {
-    withCredentials: true 
-  }
-);
-
-    console.log(res.data);
-   
-
-    // Redirect to home
-    navigate('/');
-  } catch (err) {
-    console.error('Login failed:', err);
-    alert('Login failed: ' + (err.response?.data?.message || 'Invalid credentials'));
-  }
-
-    console.log('Registering with', form);
-    navigate('/login');
+      const res = await axios.post(
+        'http://localhost:3000/auth/register',
+        form,
+        { withCredentials: true }
+      );
+      console.log('Registration successful:', res.data);
+      navigate('/login');
+    } catch (err) {
+      console.error('Registration failed:', err);
+      alert('Registration failed: ' + (err.response?.data?.message || 'Unknown error'));
+    }
   };
 
   return (
-    <div className="auth-wrapper">
+    <main className="auth-wrapper">
       <h1>Register Account</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="text"
           placeholder="Username"
@@ -65,10 +50,11 @@ const RegisterPage = () => {
         />
         <button type="submit">Register</button>
       </form>
-      <h3 className="auth-footer">
+
+      <p className="auth-footer">
         Already have an account? <Link to="/login">Login here</Link>
-      </h3>
-    </div>
+      </p>
+    </main>
   );
 };
 

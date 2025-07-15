@@ -27,110 +27,115 @@ const SectionPosts = () => {
       }
     };
 
-    if (token && section) {
-      fetchPosts();
-    }
+    if (token && section) fetchPosts();
   }, [section, token]);
 
   const toggleExpanded = (id) => {
     setExpandedId(prev => (prev === id ? null : id));
   };
 
-  // 🔼 Handle Upvote
-const handleUpvote = async (postId) => {
-  try {
-    const res = await axios.post(
-      `http://localhost:3000/posts/upvote/${postId}`,
-      {},
-      {
+  const handleUpvote = async (postId) => {
+    try {
+      await axios.post(`http://localhost:3000/posts/upvote/${postId}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true
-      }
-    );
-    console.log('Upvoted:', res.data);
-  } catch (error) {
-    console.error('Failed to upvote:', error.response?.data || error.message);
-  }
-};
+      });
+      console.log("upvote");
+    } catch (error) {
+      console.error('Failed to upvote:', error.response?.data || error.message);
+    }
+  };
 
-const handleDownvote = async (postId) => {
-  try {
-    const res = await axios.post(
-      `http://localhost:3000/posts/downvote/${postId}`,
-      {},
-      {
+  const handleDownvote = async (postId) => {
+    try {
+      await axios.post(`http://localhost:3000/posts/downvote/${postId}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true
-      }
-    );
-    console.log('Downvoted:', res.data);
-  } catch (error) {
-    console.error('Failed to downvote:', error.response?.data || error.message);
-  }
-};
+      });
+      console.log("downvote");
+    } catch (error) {
+      console.error('Failed to downvote:', error.response?.data || error.message);
+    }
+  };
 
-const handleSave = async (postId) => {
-  try {
-    const res = await axios.post(
-      `http://localhost:3000/posts/save/${postId}`,
-      {},
-      {
+  const handleSave = async (postId) => {
+    try {
+      const res = await axios.post(
+        `http://localhost:3000/posts/save/${postId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true
+        }
+      );
+      console.log('Saved post:', res.data);
+    } catch (error) {
+      console.error('Failed to save post:', error.response?.data || error.message);
+    }
+  };
+
+  const handleDelete = async (postId) => {
+    if (!window.confirm('Are you sure you want to delete this post?')) return;
+
+    try {
+      await axios.delete(`http://localhost:3000/posts/${postId}`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true
-      }
-    );
-    console.log('Saved post:', res.data);
-  } catch (error) {
-    console.error('Failed to save post:', error.response?.data || error.message);
-  }
-};
+      });
+
+      setPosts(prev => prev.filter(post => post._id !== postId));
+    } catch (error) {
+      console.error('Failed to delete post:', error.response?.data || error.message);
+    }
+  };
 
   return (
-    <div className="faq-container">
-      <div className="faq-header">
-        <h1>Posts in Section: {section}</h1>
-      </div>
+    <main className="faq-container">
+      <h1 className="faq-header">Posts in Section: {section}</h1>
 
-      <div className="faq-list">
+      <section className="faq-list">
         {posts.length > 0 ? (
           posts.map((post, index) => (
-            <div
+            <article
               key={post._id}
-              className="faq-item"
+              className={`faq-item ${expandedId === post._id ? 'expanded' : ''}`}
               style={{
                 animationDelay: `${index * 50}ms`,
                 animation: 'fadeInUp 0.5s ease-out forwards'
               }}
             >
-              <div className="faq-question" onClick={() => toggleExpanded(post._id)}>
+              <header className="faq-question" onClick={() => toggleExpanded(post._id)}>
                 <h3>{post.question}</h3>
-                {/* <div className="faq-controls">
-                  <div className="toggle-icon">
-                  {expandedId === post._id ? '▲' : '▼'}
-                  </div>
-                  </div> */}
-              </div>
+              </header>
 
               {expandedId === post._id && (
-                <div className="faq-answer show">
-                  <p>{post.answer}</p>
-                  <div className='toolbar'>
-                      <div className="upvote-bar">
-                          <button title="Upvote" onClick={() => handleUpvote(post._id)}>🔼</button>
-                          <button title="Downvote" onClick={() => handleDownvote(post._id)}>🔽</button>
-                          <button title="Save" onClick={() => handleSave(post._id)}>💾</button>
-                      </div>
-                      <p>Delete</p>
+                <div className="faq-answer">
+                  <pre
+                    onClick={() => {
+                      const selection = window.getSelection();
+                      if (!selection || selection.toString().length === 0) {
+                        toggleExpanded(post._id);
+                      }
+                    }}
+                  >
+                    {post.answer}
+                  </pre>
+
+                  <div className="toolbar">
+                    <button title="Upvote" onClick={() => handleUpvote(post._id)}>🔼{post.upvotes}</button>
+                    <button title="Downvote" onClick={() => handleDownvote(post._id)}>🔽{post.downvotes}</button>
+                    <button title="Save" onClick={() => handleSave(post._id)}>💾</button>
+                    <button title="Delete" className="delete-btn" onClick={() => handleDelete(post._id)}>🗑️</button>
                   </div>
                 </div>
               )}
-            </div>
+            </article>
           ))
         ) : (
           <p className="no-posts">No posts found in this section.</p>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

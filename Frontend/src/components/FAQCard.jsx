@@ -1,9 +1,20 @@
 import React from 'react';
 import './FAQCard.css';
 
-const FAQCard = ({ title, count, icon, onClick }) => {
+const FAQCard = ({ title, count = 0, icon, onClick }) => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') onClick();
+  };
+
   return (
-    <div onClick={onClick} className="faq-card" role="button">
+    <div
+      className="faq-card"
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex="0"
+      aria-label={`FAQ section ${title}`}
+    >
       <div className="faq-card-content">
         <div className="faq-card-icon">{icon}</div>
         <div className="faq-card-text">
