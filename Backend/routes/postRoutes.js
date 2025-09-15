@@ -10,9 +10,12 @@ const {
   upvotePost,
   downvotePost,
   savePost,
+  unsavePost,
   getAllPosts,
+  getPostById,
   getUserPosts,
   getUserSectionPosts
+
 } = require('../controllers/postController');
 
 router.post('/', auth, createPost);
@@ -22,7 +25,10 @@ router.post('/', auth, createPost);
 // router.get('/:author/:section', getPostsBySection);
 
 router.get('/getAllPosts', getAllPosts);
-router.get('/getUserPosts',auth, getUserPosts);
+router.get('/saved/:id', auth, getPostById);
+router.get('/authorPosts',auth, getUserPosts);
+
+
 router.get('/section/:section', auth, getUserSectionPosts);
 
 
@@ -32,5 +38,7 @@ router.delete('/:id', auth, deletePost);
 router.post('/upvote/:id', auth, upvotePost);
 router.post('/downvote/:id', auth, downvotePost);
 router.post('/save/:id', auth, savePost);
+router.post('/unsave/:id', auth, unsavePost);
+
 
 module.exports = router;

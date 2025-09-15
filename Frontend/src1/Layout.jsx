@@ -5,7 +5,7 @@ import Navbar from "./components/Navigation"
 const Layout = () => {
   return (
     <>
-      <Header />
+      <Header publicButton={true}/>
       <Navbar/>
       <main>
         <Outlet />

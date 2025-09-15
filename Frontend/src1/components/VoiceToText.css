@@ -1,0 +1,41 @@
+/* .mic-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: white;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.mic-on {
+  background-color: green;
+}
+
+.mic-off {
+  background-color: red;
+}
+
+.interim-bubble {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.interim-bubble.show {
+  opacity: 1;
+} */

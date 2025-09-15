@@ -34,29 +34,41 @@ const SectionPosts = () => {
     setExpandedId(prev => (prev === id ? null : id));
   };
 
-  const handleUpvote = async (postId) => {
-    try {
-      await axios.post(`http://localhost:3000/posts/upvote/${postId}`, {}, {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true
-      });
-      console.log("upvote");
-    } catch (error) {
-      console.error('Failed to upvote:', error.response?.data || error.message);
-    }
-  };
+const handleUpvote = async (postId) => {
+  try {
+    const { data } = await axios.post(`http://localhost:3000/posts/upvote/${postId}`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+      withCredentials: true
+    });
 
-  const handleDownvote = async (postId) => {
-    try {
-      await axios.post(`http://localhost:3000/posts/downvote/${postId}`, {}, {
-        headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true
-      });
-      console.log("downvote");
-    } catch (error) {
-      console.error('Failed to downvote:', error.response?.data || error.message);
-    }
-  };
+    // Assuming server returns updated post
+    setPosts(prevPosts =>
+      prevPosts.map(post =>
+        post._id === postId ? { ...post, upvotes: data.upvotes } : post
+      )
+    );
+  } catch (error) {
+    console.error('Failed to upvote:', error.response?.data || error.message);
+  }
+};
+
+const handleDownvote = async (postId) => {
+  try {
+    const { data } = await axios.post(`http://localhost:3000/posts/downvote/${postId}`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+      withCredentials: true
+    });
+
+    // Assuming server returns updated post
+    setPosts(prevPosts =>
+      prevPosts.map(post =>
+        post._id === postId ? { ...post, downvotes: data.downvotes } : post
+      )
+    );
+  } catch (error) {
+    console.error('Failed to downvote:', error.response?.data || error.message);
+  }
+};
 
   const handleSave = async (postId) => {
     try {
@@ -68,6 +80,7 @@ const SectionPosts = () => {
           withCredentials: true
         }
       );
+      alert("saved post!!");
       console.log('Saved post:', res.data);
     } catch (error) {
       console.error('Failed to save post:', error.response?.data || error.message);
@@ -110,7 +123,7 @@ const SectionPosts = () => {
 
               {expandedId === post._id && (
                 <div className="faq-answer">
-                  <pre
+                  <pre className='faq-answer-pre'
                     onClick={() => {
                       const selection = window.getSelection();
                       if (!selection || selection.toString().length === 0) {

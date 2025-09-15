@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { useAuth } from '../context/useAuth';
 
-const Header = () => {
+const Header = ({publicButton}) => {
   const { auth, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -25,6 +25,10 @@ const Header = () => {
         <div className="header-right">
           {auth.is_logged_in ? (
             <>
+              {publicButton?
+                  <Link to="/public" className="btn btn-profile">Public</Link>:
+                  <Link to="/" className="btn btn-profile">Home</Link>}
+              
               <Link to="/profile" className="btn btn-profile">Profile</Link>
               <button onClick={handleLogout} className="btn btn-logout">Logout</button>
             </>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FAQCard from '../components/FAQCard';
 import { useAuth } from '../context/useAuth';
 import './Home.css';
+// import VoiceToText from '../components/VoiceToText';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Home = () => {
       <section className="welcome-card">
         <h2>
           Welcome to <span className="highlight">FAQ Hub</span>
+
         </h2>
         <p>Browse through your assigned FAQ sections to find and manage questions.</p>
       </section>
@@ -29,13 +31,15 @@ const Home = () => {
         ) : (
           categories.map((category, index) => (
             <div
-              key={index}
-              className="faq-card-wrapper"
-              style={{ animationDelay: `${index * 100}ms` }}
+            key={index}
+            className="faq-card-wrapper"
+            style={{ animationDelay: `${index * 100}ms` }}
             >
+              {console.log(category)}
               <FAQCard
                 title={category.title}
                 icon={category.icon}
+                count={9}
                 onClick={() => navigate(category.path)}
               />
             </div>

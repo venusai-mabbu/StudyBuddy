@@ -8,6 +8,8 @@ const userSchema = new Schema({
   is_public: { type: Boolean, default: false },
   sections: [String],
   saves: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  upvotes: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  downvotes: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   posts: {
     type: Map,
     of: [{ type: Schema.Types.ObjectId, ref: 'Post' }]

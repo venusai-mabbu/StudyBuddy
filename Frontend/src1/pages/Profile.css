@@ -121,6 +121,7 @@
   flex-direction: column;
   gap: 0.75rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .input-group input {
@@ -151,6 +152,76 @@
   background-color: #2e7d32;
 }
 
+/* Accordion Styles */
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.accordion-container {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 95%;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.accordion-body {
+  background: #fff;
+  padding: 10px;
+}
+
+.accordion-body pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Toolbar Buttons */
+.toolbar {
+  margin-top: 8px;
+}
+
+.toolbar button {
+  margin-right: 8px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+/* Wrapper blocks */
+.saved-info-row {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 10px;
+    
+}
+
+.userposts-outer {
+  margin-top: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 10px 0px 10px;
+}
+
+.accordion-section {
+  margin-left: 10px;
+}
+
 /* Animation */
 @keyframes fadeIn {
   from {
@@ -169,10 +240,6 @@
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
-  }
-
-  .input-group {
-    width: 100%;
   }
 
   .submit-button {

@@ -51,26 +51,47 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
+exports.getPostById = async (req, res) => {
+  try {
+    const postId = req.params.id;
+
+    const post = await Post.findById(postId).populate('author', 'username');
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    res.status(200).json(post);
+  } catch (err) {
+    console.error('Error fetching post:', err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 exports.getUserPosts = async (req, res) => {
   try {
     if (!req.user || !req.user.id) {
       return res.status(401).json({ message: "Authentication required" });
     }
-    const user = await User.findById(req.user.id)
-      .populate('posts') // this populates the full Post objects
-      .select('posts');
-      console.log(user);
+
+    const user = await User.findById(req.user.id);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    res.status(200).json(user.posts);
+    const postsBySection = {};
+
+    for (const [section, postIds] of user.posts.entries()) {
+      const posts = await Post.find({ _id: { $in: postIds } }).populate('author', 'username');
+      postsBySection[section] = posts;
+    }
+
+    res.status(200).json(postsBySection);
   } catch (err) {
     console.error('Error fetching user posts:', err);
     res.status(500).json({ error: err.message });
   }
 };
+
 
 exports.getUserSectionPosts = async (req, res) => {
   try {
@@ -121,29 +142,77 @@ exports.deletePost = async (req, res) => {
   }
 };
 
+
 exports.upvotePost = async (req, res) => {
   try {
-    const post = await Post.findByIdAndUpdate(
-      req.params.id,
-      { $inc: { upvotes: 1 } },
-      { new: true }
-    );
+    const userId = req.user.id;
+    const postId = req.params.id;
+
+    const user = await User.findById(userId);
+    const post = await Post.findById(postId);
     if (!post) return res.status(404).json({ message: "Post not found" });
-    res.json({ message: "Post upvoted", upvotes: post.upvotes });
+
+    const alreadyUpvoted = user.upvotes.includes(postId);
+    const alreadyDownvoted = user.downvotes.includes(postId);
+
+    if (alreadyUpvoted) {
+      // Remove upvote
+      post.upvotes -= 1;
+      user.upvotes.pull(postId);
+    } else {
+      // Add upvote
+      post.upvotes += 1;
+      user.upvotes.push(postId);
+
+      // Remove downvote if it exists
+      if (alreadyDownvoted) {
+        post.downvotes -= 1;
+        user.downvotes.pull(postId);
+      }
+    }
+
+    await user.save();
+    await post.save();
+
+    res.json({ message: "Upvote updated", upvotes: post.upvotes, downvotes: post.downvotes });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
+
 exports.downvotePost = async (req, res) => {
   try {
-    const post = await Post.findByIdAndUpdate(
-      req.params.id,
-      { $inc: { downvotes: 1 } },
-      { new: true }
-    );
+    const userId = req.user.id;
+    const postId = req.params.id;
+
+    const user = await User.findById(userId);
+    const post = await Post.findById(postId);
     if (!post) return res.status(404).json({ message: "Post not found" });
-    res.json({ message: "Post downvoted", downvotes: post.downvotes });
+
+    const alreadyDownvoted = user.downvotes.includes(postId);
+    const alreadyUpvoted = user.upvotes.includes(postId);
+
+    if (alreadyDownvoted) {
+      // Remove downvote
+      post.downvotes -= 1;
+      user.downvotes.pull(postId);
+    } else {
+      // Add downvote
+      post.downvotes += 1;
+      user.downvotes.push(postId);
+
+      // Remove upvote if it exists
+      if (alreadyUpvoted) {
+        post.upvotes -= 1;
+        user.upvotes.pull(postId);
+      }
+    }
+
+    await user.save();
+    await post.save();
+
+    res.json({ message: "Downvote updated", upvotes: post.upvotes, downvotes: post.downvotes });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -162,6 +231,27 @@ exports.savePost = async (req, res) => {
     }
 
     res.json({ message: "Post saved", saves: user.saves });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.unsavePost = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const postId = req.params.id;
+
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Remove postId if it exists in the saves array
+    const index = user.saves.indexOf(postId);
+    if (index !== -1) {
+      user.saves.splice(index, 1); // or use .pull(postId) if it's a Mongoose array
+      await user.save();
+    }
+
+    res.json({ message: "Post unsaved", saves: user.saves });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
