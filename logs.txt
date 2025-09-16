@@ -10,6 +10,8 @@ backup file -- backend good frontend partially good
 7f37e96 -- added upvote,saves
 ac0622e  -- optimised UI
 
+5f78be6  -- static public profiles working fine
+
 
 
 

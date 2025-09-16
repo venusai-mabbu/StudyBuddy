@@ -9,9 +9,12 @@ const {
   getProfile,
   updateUsername,
   updatePassword,
+  updateProfile,
   togglePublic,
   unsavePost,
-  getSections
+  getSections,
+  getPublicProfiles,
+  getPublicProfileById
 } = require('../controllers/authController');
 
 
@@ -28,8 +31,13 @@ router.get('/sections', auth, getSections);
 
 router.put('/update-username', auth, updateUsername);
 router.put('/update-password', auth, updatePassword);
+router.put('/update-profile', auth, updateProfile);
 router.patch('/toggle-public', auth, togglePublic);
 router.delete('/unsave/:id', auth, unsavePost);
+
+
+router.get("/public", getPublicProfiles);
+router.get("/public/:id", getPublicProfileById);
 
 
 module.exports = router;
